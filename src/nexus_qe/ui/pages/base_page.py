@@ -1,5 +1,5 @@
 from playwright.sync_api import Locator, Page
-
+from pathlib import Path
 from nexus_qe.core.base import BaseService
 
 
@@ -41,3 +41,12 @@ class BasePage(BaseService):
         url: str,
     ) -> None:
         self.page.wait_for_url(url)
+
+    def take_screenshot(
+        self,
+        destination: str | Path,
+    ) -> None:
+        self.page.screenshot(
+            path=str(destination),
+            full_page=True,
+        )
