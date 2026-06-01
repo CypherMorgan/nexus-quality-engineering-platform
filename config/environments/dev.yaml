@@ -1,0 +1,14 @@
+application:
+  base_url: "http://localhost:3000"
+
+api:
+  base_url: "http://localhost:8000"
+  timeout: 30
+
+database:
+  connection_string: "sqlite:///dev.db"
+
+browser:
+  browser_name: "chromium"
+  headless: true
+  timeout: 30000

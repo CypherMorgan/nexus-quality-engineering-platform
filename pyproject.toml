@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus-quality-engineering-platform"
+version = "0.1.0"
+description = "Production-inspired QA Automation Framework built with Playwright, Pytest, API Testing, Database Validation, Docker, GitHub Actions, and Allure Reporting."
+readme = "README.md"
+requires-python = ">=3.11"
+
+authors = [
+    {name = "Your Name"}
+]
+
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src"
+]
+
+addopts = """
+-v
+-s
+--tb=short
+--strict-markers
+"""
+
+testpaths = [
+    "tests"
+]
+
+markers = [
+    "smoke",
+    "regression",
+    "api",
+    "database",
+    "e2e",
+    "accessibility",
+    "visual"
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+strict = false
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true

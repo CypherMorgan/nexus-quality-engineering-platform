@@ -1,0 +1,14 @@
+application:
+  base_url: "https://production.example.com"
+
+api:
+  base_url: "https://api.production.example.com"
+  timeout: 30
+
+database:
+  connection_string: "postgresql://user:password@db:5432/app"
+
+browser:
+  browser_name: "chromium"
+  headless: true
+  timeout: 30000
