@@ -1,0 +1,10 @@
+INSERT INTO users
+(
+    id,
+    username
+)
+VALUES
+(
+    1,
+    'test_user'
+);
