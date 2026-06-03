@@ -1,15 +1,16 @@
 environment: qa
+
 application:
-  base_url: "http://localhost:3000"
+  base_url: "http://localhost:8000"
 
 api:
   base_url: "http://localhost:8000"
   timeout: 30
 
 database:
-  connection_string: "sqlite:///qa.db"
+  connection_string: "sqlite:////data/users.db"
 
 browser:
-  browser_name: "chromium"
+  browser_name: chromium
   headless: true
   timeout: 30000

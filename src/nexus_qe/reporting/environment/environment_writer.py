@@ -4,7 +4,6 @@ from nexus_qe.core.config import Settings
 
 
 class EnvironmentWriter:
-    """Writes environment details into Allure."""
 
     @staticmethod
     def write() -> None:
@@ -15,8 +14,8 @@ class EnvironmentWriter:
         )
 
         output.parent.mkdir(
-            exist_ok=True,
             parents=True,
+            exist_ok=True,
         )
 
         output.write_text(

@@ -9,14 +9,18 @@ from nexus_qe.ui.pages.login_page import (
 from nexus_qe.ui.workflows.login_workflow import (
     LoginWorkflow,
 )
+from nexus_qe.core.config.settings import (
+    Settings,
+)
 
+settings = Settings().config
 
 @pytest.mark.smoke
 def test_valid_login(page):
     login_page = LoginPage(page)
 
     login_page.navigate(
-        "http://localhost:8000/login"
+        f"{settings.application.base_url}/login"
     )
 
     user = UserFactory.demo_user()

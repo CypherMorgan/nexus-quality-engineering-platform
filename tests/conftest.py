@@ -6,6 +6,9 @@ from nexus_qe.reporting.allure import AllureManager
 from nexus_qe.reporting.attachments import AttachmentManager
 from nexus_qe.reporting.environment import EnvironmentWriter
 from nexus_qe.ui.browser import BrowserManager
+from nexus_qe.observability.metrics import (
+    ExecutionTimer,
+)
 
 
 def pytest_addoption(parser) -> None:
@@ -100,4 +103,19 @@ def pytest_runtest_makereport(item, call):
         file_path=str(screenshot_path),
         name=f"{item.name}_failure_screenshot",
         attachment_type=allure.attachment_type.PNG,
+    )
+
+@pytest.fixture
+def execution_timer():
+    timer = ExecutionTimer()
+
+    timer.start()
+
+    yield timer
+
+    duration = timer.stop()
+
+    print(
+        f"\nExecution Time: "
+        f"{duration:.2f}s"
     )

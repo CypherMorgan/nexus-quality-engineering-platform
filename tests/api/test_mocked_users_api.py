@@ -3,6 +3,11 @@ import pytest
 from nexus_qe.ui.network import (
     NetworkMock,
 )
+from nexus_qe.core.config.settings import (
+    Settings,
+)
+
+settings = Settings().config
 
 
 @pytest.mark.api
@@ -14,15 +19,15 @@ def test_mocked_users_response(
     )
 
     response = page.evaluate(
-        """
-        async () => {
+        f"""
+        async () => {{
             const response =
                 await fetch(
-                    'http://localhost:8000/users/1'
+                    '{settings.api.base_url}/users/1'
                 );
 
             return await response.json();
-        }
+        }}
         """
     )
 

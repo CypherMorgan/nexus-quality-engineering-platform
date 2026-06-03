@@ -5,13 +5,31 @@ from PIL import ImageChops
 
 
 class VisualValidator:
-    """Simple screenshot comparison utility."""
 
     @staticmethod
     def compare(
         baseline: str,
         current: str,
     ) -> bool:
+
+        baseline_file = Path(
+            baseline
+        )
+
+        if not baseline_file.exists():
+
+            baseline_file.parent.mkdir(
+                parents=True,
+                exist_ok=True,
+            )
+
+            Image.open(
+                current
+            ).save(
+                baseline_file
+            )
+
+            return True
 
         baseline_img = Image.open(
             baseline

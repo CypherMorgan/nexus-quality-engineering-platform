@@ -28,7 +28,7 @@ class BasePage(BaseService):
         self,
         locator: str,
     ) -> str:
-        return self.page.locator(locator).text_content() or ""
+        return self.page.locator(locator).inner_text()
 
     def locator(
         self,

@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 
 from app.database import Base
@@ -14,6 +15,29 @@ app = FastAPI(
 
 Base.metadata.create_all(bind=engine)
 
+def seed_database() -> None:
+    db: Session = SessionLocal()
+
+    existing_user = (
+        db.query(User)
+        .filter(User.id == 1)
+        .first()
+    )
+
+    if existing_user:
+        db.close()
+        return
+
+    demo_user = User(
+        id=1,
+        username="demo",
+    )
+
+    db.add(demo_user)
+    db.commit()
+    db.close()
+
+seed_database()
 
 @app.get("/health")
 def health():
@@ -63,16 +87,24 @@ def get_user(user_id: int):
         "username": user.username,
     }
 
-
-@app.get("/login")
+@app.get(
+    "/login",
+    response_class=HTMLResponse,
+)
 def login_page():
     return Path(
         "app/templates/login.html"
-    ).read_text()
+    ).read_text(
+        encoding="utf-8"
+    )
 
-
-@app.get("/dashboard")
+@app.get(
+    "/dashboard",
+    response_class=HTMLResponse,
+)
 def dashboard_page():
     return Path(
         "app/templates/dashboard.html"
-    ).read_text()
+    ).read_text(
+        encoding="utf-8"
+    )

@@ -4,13 +4,19 @@ from nexus_qe.ui.accessibility import (
     AccessibilityScanner,
 )
 
+from nexus_qe.core.config.settings import (
+    Settings,
+)
+
+settings = Settings().config
+
 
 @pytest.mark.regression
 def test_login_page_accessibility(
     page,
 ):
     page.goto(
-        "http://localhost:8000/login"
+        f"{settings.application.base_url}/login"
     )
 
     violations = (

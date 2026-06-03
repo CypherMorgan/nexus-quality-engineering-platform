@@ -1,7 +1,6 @@
 name: Smoke Tests
 
 on:
-
   push:
     branches:
       - main
@@ -9,9 +8,7 @@ on:
   pull_request:
 
 jobs:
-
   smoke:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,18 +18,20 @@ jobs:
           - firefox
 
     steps:
-
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Build Containers
+        run: docker compose build
+
+      - name: Execute Smoke Suite
+        run: |
+          docker compose run --rm \
+            -e TEST_ENV=docker \
+            automation \
+            pytest -m smoke --browser ${{ matrix.browser }}
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
         with:
-          python-version: "3.12"
-
-      - run: pip install -r requirements.txt
-
-      - run: playwright install
-
-      - run: |
-          pytest \
-          -m smoke \
-          --browser ${{ matrix.browser }}
+          name: allure-results-${{ matrix.browser }}
+          path: allure-results

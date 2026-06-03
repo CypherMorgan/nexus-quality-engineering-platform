@@ -5,14 +5,18 @@ import pytest
 from nexus_qe.ui.visual import (
     VisualValidator,
 )
+from nexus_qe.core.config.settings import (
+    Settings,
+)
 
+settings = Settings().config
 
 @pytest.mark.regression
 def test_dashboard_visual(
     page,
 ):
     page.goto(
-        "http://localhost:8000/dashboard"
+        f"{settings.application.base_url}/dashboard"
     )
 
     current = (

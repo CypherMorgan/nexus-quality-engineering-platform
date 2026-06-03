@@ -8,13 +8,11 @@ class AuthClient(ApiClient):
         self,
         username: str,
         password: str,
-    ) -> dict:
-        response = self.post(
+    ):
+        return self.post(
             "/auth/login",
             {
                 "username": username,
                 "password": password,
             },
         )
-
-        return response.body

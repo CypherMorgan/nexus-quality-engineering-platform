@@ -17,8 +17,8 @@ class SchemaValidator:
         payload: dict,
     ) -> None:
         schema_file: Path = (
-            FrameworkConstants.CONFIG_DIR
-            / "schemas"
+            Path(__file__).parent.parent
+            / "contracts"
             / schema_name
         )
 

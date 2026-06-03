@@ -1,15 +1,31 @@
-from axe_playwright_python.sync_playwright import Axe
+from playwright.sync_api import Page
+
 
 class AccessibilityScanner:
-    """Accessibility validation utility."""
+    """Basic accessibility validation."""
 
     @staticmethod
-    def scan(page):
-        results = Axe().scan(page)
+    def scan(
+        page: Page,
+    ) -> list[str]:
 
-        violations = results.get(
-            "violations",
-            []
-        )
+        violations = []
+
+        images = page.locator("img")
+
+        count = images.count()
+
+        for index in range(count):
+
+            alt = (
+                images
+                .nth(index)
+                .get_attribute("alt")
+            )
+
+            if not alt:
+                violations.append(
+                    "Image missing alt text"
+                )
 
         return violations

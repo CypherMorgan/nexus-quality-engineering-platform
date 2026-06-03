@@ -20,6 +20,11 @@ def test_get_user():
         200,
     )
 
+    assert (
+        response.body["username"]
+        == "demo"
+    )
+
     SchemaValidator.validate_response(
         "user_schema.json",
         response.body,
