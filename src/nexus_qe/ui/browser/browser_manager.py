@@ -5,7 +5,9 @@ from playwright.sync_api import (
     Playwright,
     sync_playwright,
 )
-
+from nexus_qe.core.constants import (
+    FrameworkConstants,
+)
 from nexus_qe.core.config import Settings
 from nexus_qe.observability.logging import LoggerManager
 from nexus_qe.reporting.artifacts import ArtifactManager
@@ -40,7 +42,9 @@ class BrowserManager:
         )
 
         context = browser.new_context(
-            record_video_dir="reports/videos"
+            record_video_dir=str(
+                FrameworkConstants.VIDEOS_DIR
+            )
         )
 
         page = context.new_page()

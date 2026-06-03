@@ -15,4 +15,12 @@ def test_authentication_endpoint():
         "password",
     )
 
-    assert response is not None
+    ResponseValidator.status_code(
+        response.status_code,
+        200,
+    )
+
+    assert (
+        "token"
+        in response.body
+    )

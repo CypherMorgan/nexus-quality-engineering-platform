@@ -17,7 +17,10 @@ def test_user_lifecycle():
         "/users/1"
     )
 
-    assert response.status_code == 200
+    assert (
+        response.status_code
+        == 200
+    )
 
     executor = QueryExecutor()
 
@@ -32,4 +35,9 @@ def test_user_lifecycle():
 
     DatabaseAssertions.record_exists(
         record
+    )
+
+    assert (
+        response.body["id"]
+        == record.id
     )

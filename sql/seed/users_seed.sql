@@ -1,3 +1,5 @@
+DELETE FROM users;
+
 INSERT INTO users
 (
     id,
@@ -6,5 +8,5 @@ INSERT INTO users
 VALUES
 (
     1,
-    'test_user'
+    'demo'
 );

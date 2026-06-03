@@ -4,7 +4,7 @@ from pathlib import Path
 class FrameworkConstants:
     """Framework-wide constants."""
 
-    PROJECT_ROOT = Path(__file__).resolve().parents[5]
+    PROJECT_ROOT = Path(__file__).resolve().parents[4]
 
     CONFIG_DIR = PROJECT_ROOT / "config"
     ENVIRONMENTS_DIR = CONFIG_DIR / "environments"

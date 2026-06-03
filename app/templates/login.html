@@ -3,21 +3,30 @@
 <head>
     <title>Login</title>
 </head>
+
 <body>
 
-<input
-    data-testid="username"
-/>
+<form action="/dashboard">
 
-<input
-    data-testid="password"
-/>
+    <input
+        data-testid="username"
+        name="username"
+    />
 
-<button
-    data-testid="login-button"
->
-    Login
-</button>
+    <input
+        data-testid="password"
+        name="password"
+        type="password"
+    />
+
+    <button
+        data-testid="login-button"
+        type="submit"
+    >
+        Login
+    </button>
+
+</form>
 
 </body>
 </html>

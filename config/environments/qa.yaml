@@ -1,3 +1,4 @@
+environment: qa
 application:
   base_url: "http://localhost:3000"
 

@@ -1,3 +1,13 @@
+Metadata-Version: 2.4
+Name: nexus-quality-engineering-platform
+Version: 0.1.0
+Summary: Production-inspired QA Automation Framework built with Playwright, Pytest, API Testing, Database Validation, Docker, GitHub Actions, and Allure Reporting.
+Author: Your Name
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
 # Nexus Quality Engineering Platform (WIP)
 
 ## Overview

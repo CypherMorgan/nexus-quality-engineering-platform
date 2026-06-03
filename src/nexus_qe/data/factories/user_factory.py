@@ -1,16 +1,22 @@
 from faker import Faker
 
-from nexus_qe.data.models import User
+from nexus_qe.data.models.user import User
 
-fake = Faker()
+faker = Faker()
 
 
 class UserFactory:
-    """Creates test users."""
 
     @staticmethod
     def build() -> User:
         return User(
-            username=fake.user_name(),
-            password=fake.password(),
+            username=faker.user_name(),
+            password=faker.password(),
+        )
+
+    @staticmethod
+    def demo_user() -> User:
+        return User(
+            username="demo",
+            password="password",
         )

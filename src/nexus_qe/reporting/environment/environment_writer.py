@@ -23,7 +23,7 @@ class EnvironmentWriter:
             (
                 f"environment={config.environment}\n"
                 f"browser={config.browser.browser_name}\n"
-                f"base_url={config.ui.base_url}\n"
+                f"base_url={config.application.base_url}\n"
             ),
             encoding="utf-8",
         )

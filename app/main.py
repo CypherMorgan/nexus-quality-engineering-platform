@@ -1,7 +1,6 @@
 from pathlib import Path
 
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
 from app.database import Base
@@ -23,10 +22,28 @@ def health():
     }
 
 
+@app.post("/auth/login")
+def login(payload: dict):
+    username = payload.get("username")
+    password = payload.get("password")
+
+    if (
+        username == "demo"
+        and password == "password"
+    ):
+        return {
+            "token": "mock-jwt-token",
+            "username": username,
+        }
+
+    raise HTTPException(
+        status_code=401,
+        detail="Invalid credentials",
+    )
+
+
 @app.get("/users/{user_id}")
-def get_user(
-    user_id: int,
-):
+def get_user(user_id: int):
     db: Session = SessionLocal()
 
     user = (
@@ -35,26 +52,26 @@ def get_user(
         .first()
     )
 
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found",
+        )
+
     return {
         "id": user.id,
         "username": user.username,
     }
 
 
-@app.get(
-    "/login",
-    response_class=HTMLResponse,
-)
+@app.get("/login")
 def login_page():
     return Path(
         "app/templates/login.html"
     ).read_text()
 
 
-@app.get(
-    "/dashboard",
-    response_class=HTMLResponse,
-)
+@app.get("/dashboard")
 def dashboard_page():
     return Path(
         "app/templates/dashboard.html"

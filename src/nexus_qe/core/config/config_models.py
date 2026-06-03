@@ -21,6 +21,7 @@ class BrowserConfig(BaseModel):
 
 
 class EnvironmentConfig(BaseModel):
+    environment: str
     application: ApplicationConfig
     api: ApiConfig
     database: DatabaseConfig
