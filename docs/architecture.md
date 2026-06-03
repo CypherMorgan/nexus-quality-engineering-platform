@@ -1,65 +1,31 @@
-# Nexus Quality Engineering Platform
+# Framework Architecture
 
-## Objectives
+```mermaid
+graph TD
 
-The framework provides:
+A[Test Suites]
 
-- UI automation using Playwright
-- API automation using Requests
-- Database validation
-- Environment management
-- Dockerized execution
-- GitHub Actions CI/CD
-- Allure reporting
-- Parallel execution
+A --> B[UI Layer]
+A --> C[API Layer]
+A --> D[Database Layer]
 
----
+B --> E[Playwright]
+B --> F[Page Objects]
 
-## High Level Architecture
+C --> G[Api Client]
+C --> H[Validators]
 
-```text
-Tests
-  |
-  v
-Fixtures
-  |
-  v
-Framework Core
-  |
-  +---- UI Layer
-  |
-  +---- API Layer
-  |
-  +---- Database Layer
-  |
-  +---- Reporting
-  |
-  +---- Observability
-```
+D --> I[Database Manager]
+D --> J[Query Executor]
 
----
+E --> K[Reporting]
+G --> K
+I --> K
 
-## Execution Flow
+K --> L[Allure]
 
-```text
-Pytest
-  |
-  v
-Load Environment
-  |
-  v
-Initialize Fixtures
-  |
-  v
-Execute Tests
-  |
-  +---- UI
-  +---- API
-  +---- Database
-  |
-  v
-Generate Reports
-  |
-  v
-Publish Artifacts
+M[Configuration]
+M --> E
+M --> G
+M --> I
 ```

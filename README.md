@@ -1,73 +1,66 @@
-# Nexus Quality Engineering Platform (WIP)
+# Nexus Quality Engineering Platform
 
-## Overview
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![Playwright](https://img.shields.io/badge/playwright-latest-green)
+![Pytest](https://img.shields.io/badge/pytest-framework-orange)
+![Docker](https://img.shields.io/badge/docker-enabled-blue)
+![GitHub Actions](https://img.shields.io/badge/CI-CD-success-brightgreen)
 
-Enterprise-inspired test automation framework built using:
+Enterprise-inspired Quality Engineering platform built using Playwright, PyTest, API Automation, Database Validation, Docker, Allure Reporting, and GitHub Actions.
 
-- Playwright    
-- Pytest
-- API Automation
-- Database Validation
-- Docker
-- GitHub Actions
-- Allure Reporting
+Designed to demonstrate modern QA Automation engineering practices including UI testing, API validation, database verification, observability, CI/CD integration, accessibility testing, visual validation, and end-to-end workflows.
 
 ---
 
 ## Features
 
-- UI Automation
-- API Testing
-- Database Validation
-- Environment Management
-- Test Data Management
-- Logging
-- Reporting
-- Parallel Execution
-- Accessibility Testing
-- Visual Validation
-- Network Mocking
+### UI Automation
 
----
+* Playwright (Python)
+* Page Object Model
+* Cross-browser support
+* Screenshot capture
+* Video recording
+* Trace collection
+* Network interception
 
-## Project Structure
+### API Automation
 
-(To be completed in later batches)
+* API client abstraction
+* Authentication layer
+* Response validation
+* JSON schema validation
+* Contract testing support
 
----
+### Database Validation
 
-## Installation
+* SQLite support
+* PostgreSQL-ready architecture
+* Query abstraction layer
+* Database assertions
 
-```bash
-pip install -r requirements.txt
-playwright install
-```
+### Reporting
 
----
+* Allure Reports
+* Failure screenshots
+* Environment metadata
+* Execution artifacts
 
-## Running Tests
+### Quality Engineering
 
-```bash
-pytest
-```
+* Accessibility testing
+* Visual validation
+* Mock APIs
+* Data-driven testing
+* End-to-End validation
 
----
+### DevOps
 
-## Docker
-
-(To be completed)
-
----
-
-## CI/CD
-
-(To be completed)
-
----
-
-## Reporting
-
-(To be completed)
+* Dockerized execution
+* GitHub Actions CI/CD
+* Smoke suite
+* Regression suite
+* Scheduled execution
 
 ---
 
@@ -75,14 +68,117 @@ pytest
 
 See:
 
+* docs/architecture.md
+* docs/execution-flow.md
+* docs/cicd.md
+* docs/reporting.md
+
+---
+
+## Project Structure
+
 ```text
-docs/architecture.md
+nexus-quality-engineering-platform
+├── src/
+├── tests/
+├── config/
+├── sql/
+├── app/
+├── reports/
+├── docs/
+├── .github/
+└── docker-compose.yml
+```
+
+---
+
+## Quick Start
+
+### Local
+
+```bash
+pip install -r requirements.txt
+playwright install
+pytest -v
+```
+
+### Docker
+
+```bash
+docker compose build
+docker compose up
+```
+
+### Smoke Suite
+
+```bash
+pytest -m smoke
+```
+
+### Regression Suite
+
+```bash
+pytest -m regression
+```
+
+---
+
+## Reporting
+
+Generate Allure Report
+
+```bash
+allure serve allure-results
+```
+
+---
+
+## CI/CD
+
+### Smoke Pipeline
+
+* Runs on push
+* Runs on pull request
+
+### Regression Pipeline
+
+* Manual execution
+* Scheduled execution
+
+Artifacts:
+
+* Allure Results
+* Reports
+* Logs
+
+---
+
+## Test Categories
+
+```bash
+pytest -m smoke
+pytest -m regression
+pytest -m api
+pytest -m ui
+pytest -m database
+pytest -m e2e
+pytest -m accessibility
+pytest -m visual
 ```
 
 ---
 
 ## Future Enhancements
 
-- Kubernetes execution
-- Cloud browser execution
-- Distributed execution
+* PostgreSQL service container
+* Kubernetes execution
+* BrowserStack integration
+* Pact contract testing
+* Grafana dashboards
+* OpenTelemetry integration
+
+---
+
+## Author
+
+Built as a portfolio project demonstrating modern QA Automation and Quality Engineering practices using Python, Playwright, Docker, and CI/CD.

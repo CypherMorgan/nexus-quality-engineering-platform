@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nexus-quality-engineering-platform"
 version = "0.1.0"
-description = "Production-inspired QA Automation Framework built with Playwright, Pytest, API Testing, Database Validation, Docker, GitHub Actions, and Allure Reporting."
+description = "Enterprise-inspired Quality Engineering platform built using Playwright, PyTest, API Automation, Database Validation, Docker, Allure Reporting, and GitHub Actions."
 readme = "README.md"
 requires-python = ">=3.11"
 
