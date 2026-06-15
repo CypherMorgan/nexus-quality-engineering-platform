@@ -4,7 +4,6 @@
 ![Playwright](https://img.shields.io/badge/playwright-latest-green)
 ![Pytest](https://img.shields.io/badge/pytest-framework-orange)
 ![Docker](https://img.shields.io/badge/docker-enabled-blue)
-![GitHub Actions](https://img.shields.io/badge/CI-CD-success-brightgreen)
 
 A **complete QA Engineering framework** I built to automate end-to-end testing (UI, API, DB) for web applications — all while keeping code maintainable, CI/CD seamless, and visibility high.
 
@@ -20,7 +19,7 @@ Built as part of my portfolio to showcase:
 
 ---
 
-## 🔧 Key Modules (What You Built)
+## 🔧 Key Modules
 
 ### ✅ UI Automation  
 Playwright + Page Object Model = Cross-browser, reliable UI tests with video/traces/snapshots.
