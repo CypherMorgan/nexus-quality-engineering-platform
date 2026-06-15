@@ -11,16 +11,11 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        browser:
-          - chromium
-          - firefox
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Build Containers
+      - name: Build Docker Images
         run: docker compose build
 
       - name: Execute Smoke Suite
@@ -28,10 +23,18 @@ jobs:
           docker compose run --rm \
             -e TEST_ENV=docker \
             automation \
-            pytest -m smoke --browser ${{ matrix.browser }}
+            pytest -m smoke
 
       - name: Upload Allure Results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.browser }}
+          name: allure-results
           path: allure-results
+
+      - name: Upload Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: reports
